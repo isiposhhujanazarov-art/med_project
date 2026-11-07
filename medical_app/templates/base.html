@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'medical_app/css/style.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{% url 'home' %}" class="logo">МедОрганизация</a>
+            <ul class="nav-links">
+                <li>
+                    <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+                        Главная
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">
+                        О нас
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'contacts' %}" class="{% if request.resolver_match.url_name == 'contacts' %}active{% endif %}">
+                        Контакты
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'location' %}" class="{% if request.resolver_match.url_name == 'location' %}active{% endif %}">
+                        Как нас найти
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'services' %}" class="{% if request.resolver_match.url_name == 'services' %}active{% endif %}">
+                        Услуги
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'doctors' %}" class="{% if request.resolver_match.url_name == 'doctors' %}active{% endif %}">
+                        Врачи
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
