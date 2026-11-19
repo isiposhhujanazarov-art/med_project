@@ -10,35 +10,17 @@
     <header>
         <nav>
             <a href="{% url 'home' %}" class="logo">МедОрганизация</a>
-            <ul class="nav-links">
-                <li>
-                    <a href="{% url 'home' %}" class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">
-                        Главная
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'about' %}" class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">
-                        О нас
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'contacts' %}" class="{% if request.resolver_match.url_name == 'contacts' %}active{% endif %}">
-                        Контакты
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'location' %}" class="{% if request.resolver_match.url_name == 'location' %}active{% endif %}">
-                        Как нас найти
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'services' %}" class="{% if request.resolver_match.url_name == 'services' %}active{% endif %}">
-                        Услуги
-                    </a>
-                </li>
-                <li>
-                    <a href="{% url 'doctors' %}" class="{% if request.resolver_match.url_name == 'doctors' %}active{% endif %}">
-                        Врачи
+    
+
+<ul class="nav-links">
+    <li><a href="{% url 'home' %}">Главная</a></li>
+    <li><a href="{% url 'vrachi_list' %}">Врачи</a></li>
+    <li><a href="{% url 'hospital_list' %}">Больницы</a></li>
+    <li><a href="{% url 'polyklinika_list' %}">Поликлиники</a></li>
+    <li><a href="{% url 'patient_list' %}">Пациенты</a></li>
+    <li><a href="{% url 'posehenie_list' %}">Посещения</a></li>
+</ul>
+
                     </a>
                 </li>
             </ul>

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Список врачей</h1>
+<a href="{% url 'vrachi_create' %}">+ Добавить врача</a>
+<ul>
+    {% for item in items %}
+    <li>
+        {% if item.photo %}
+            <img src="{{ item.photo.url }}" alt="{{ item.fio }}" width="60">
+        {% endif %}
+        <a href="{% url 'vrachi_detail' item.pk %}">{{ item.fio }}</a> ({{ item.specialis }}) —
+        <a href="{% url 'vrachi_update' item.pk %}">Изменить</a> |
+        <a href="{% url 'vrachi_delete' item.pk %}">Удалить</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ item.name }}</h1>
+<p><strong>Адрес:</strong> {{ item.addres }}</p>
+<p><strong>Телефон:</strong> {{ item.telephone }}</p>
+<p><strong>Заведующий врач:</strong> {{ item.vrach }}</p>
+<a href="{% url 'polyklinika_list' %}">← Назад к списку поликлиник</a> |
+<a href="{% url 'polyklinika_update' item.pk %}">Изменить</a> |
+<a href="{% url 'polyklinika_delete' item.pk %}">Удалить</a>
+{% endblock %}

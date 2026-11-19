@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ item.name_org }}</h1>
+{% if item.photo %}
+    <img src="{{ item.photo.url }}" alt="{{ item.name_org }}" width="250">
+{% else %}
+    <p><em>Фотография здания не загружена</em></p>
+{% endif %}
+<p><strong>Адрес:</strong> {{ item.addres }}</p>
+<p><strong>Телефон:</strong> {{ item.telephone }}</p>
+<p><strong>Главный врач:</strong> {{ item.vrach }}</p>
+<a href="{% url 'hospital_list' %}">← Назад к списку больниц</a> |
+<a href="{% url 'hospital_update' item.pk %}">Изменить</a> |
+<a href="{% url 'hospital_delete' item.pk %}">Удалить</a>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Запись на приём №{{ item.pk }}</h1>
+<p><strong>Пациент:</strong> {{ item.patient }}</p>
+<p><strong>Поликлиника:</strong> {{ item.polyklinika }}</p>
+<p><strong>Дата посещения:</strong> {{ item.data_posesheniya }}</p>
+<p><strong>Время приёма:</strong> {{ item.time }}</p>
+<a href="{% url 'posehenie_list' %}">← Назад к списку посещений</a> |
+<a href="{% url 'posehenie_update' item.pk %}">Изменить</a> |
+<a href="{% url 'posehenie_delete' item.pk %}">Удалить</a>
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ item.fio }}</h1>
+<p><strong>Пол:</strong> {{ item.get_pol_display }}</p>
+<p><strong>Дата рождения:</strong> {{ item.data_rozh }}</p>
+<a href="{% url 'patient_list' %}">← Назад к списку пациентов</a> |
+<a href="{% url 'patient_update' item.pk %}">Изменить</a> |
+<a href="{% url 'patient_delete' item.pk %}">Удалить</a>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Удалить запись "{{ object }}"?</h1>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Подтвердить удаление</button>
+</form>
+<br>
+<a href="{% url back_url %}">← Отмена, вернуться к списку</a>
+{% endblock %}

@@ -16,14 +16,49 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from medical_app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='home'),
-    path('about/', views.about_view, name='about'),
-    path('about/contacts/', views.contacts_view, name='contacts'),
-    path('about/location/', views.location_view, name='location'),
-    path('services/', views.services_view, name='services'),
-    path('doctors/', views.doctors_view, name='doctors'),
+
+    # 1. Врачи
+    path('vrachi/', views.VrachiListView.as_view(), name='vrachi_list'),
+    path('vrachi/<int:pk>/', views.VrachiDetailView.as_view(), name='vrachi_detail'),
+    path('vrachi/create/', views.VrachiCreateView.as_view(), name='vrachi_create'),
+    path('vrachi/<int:pk>/update/', views.VrachiUpdateView.as_view(), name='vrachi_update'),
+    path('vrachi/<int:pk>/delete/', views.VrachiDeleteView.as_view(), name='vrachi_delete'),
+
+    # 2. Больницы
+    path('hospitals/', views.HospitalListView.as_view(), name='hospital_list'),
+    path('hospitals/<int:pk>/', views.HospitalDetailView.as_view(), name='hospital_detail'),
+    path('hospitals/create/', views.HospitalCreateView.as_view(), name='hospital_create'),
+    path('hospitals/<int:pk>/update/', views.HospitalUpdateView.as_view(), name='hospital_update'),
+    path('hospitals/<int:pk>/delete/', views.HospitalDeleteView.as_view(), name='hospital_delete'),
+
+    # 3. Поликлиники
+    path('polyclinics/', views.PolyklinikaListView.as_view(), name='polyklinika_list'),
+    path('polyclinics/<int:pk>/', views.PolyklinikaDetailView.as_view(), name='polyklinika_detail'),
+    path('polyclinics/create/', views.PolyklinikaCreateView.as_view(), name='polyklinika_create'),
+    path('polyclinics/<int:pk>/update/', views.PolyklinikaUpdateView.as_view(), name='polyklinika_update'),
+    path('polyclinics/<int:pk>/delete/', views.PolyklinikaDeleteView.as_view(), name='polyklinika_delete'),
+
+    # 4. Пациенты
+    path('patients/', views.PatientListView.as_view(), name='patient_list'),
+    path('patients/<int:pk>/', views.PatientDetailView.as_view(), name='patient_detail'),
+    path('patients/create/', views.PatientCreateView.as_view(), name='patient_create'),
+    path('patients/<int:pk>/update/', views.PatientUpdateView.as_view(), name='patient_update'),
+    path('patients/<int:pk>/delete/', views.PatientDeleteView.as_view(), name='patient_delete'),
+
+    # 5. Посещения
+    path('visits/', views.PosehenieListView.as_view(), name='posehenie_list'),
+    path('visits/<int:pk>/', views.PosehenieDetailView.as_view(), name='posehenie_detail'),
+    path('visits/create/', views.PosehenieCreateView.as_view(), name='posehenie_create'),
+    path('visits/<int:pk>/update/', views.PosehenieUpdateView.as_view(), name='posehenie_update'),
+    path('visits/<int:pk>/delete/', views.PosehenieDeleteView.as_view(), name='posehenie_delete'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ item.fio }}</h1>
+{% if item.photo %}
+    <img src="{{ item.photo.url }}" alt="{{ item.fio }}" width="250">
+{% else %}
+    <p><em>Фотография не загружена</em></p>
+{% endif %}
+<p><strong>Специальность:</strong> {{ item.specialis }}</p>
+<p><strong>Дата начала работы:</strong> {{ item.start_date }}</p>
+<a href="{% url 'vrachi_list' %}">← Назад к списку врачей</a> |
+<a href="{% url 'vrachi_update' item.pk %}">Изменить</a> |
+<a href="{% url 'vrachi_delete' item.pk %}">Удалить</a>
+{% endblock %}

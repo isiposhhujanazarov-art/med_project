@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Список больниц</h1>
+<a href="{% url 'hospital_create' %}">+ Добавить больницу</a>
+<ul>
+    {% for item in items %}
+    <li>
+        {% if item.photo %}
+            <img src="{{ item.photo.url }}" alt="{{ item.name_org }}" width="60">
+        {% endif %}
+        <a href="{% url 'hospital_detail' item.pk %}">{{ item.name_org }}</a> ({{ item.addres }}) —
+        <a href="{% url 'hospital_update' item.pk %}">Изменить</a> |
+        <a href="{% url 'hospital_delete' item.pk %}">Удалить</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Посещения поликлиники</h1>
+<a href="{% url 'posehenie_create' %}">+ Записать на приём</a>
+<ul>
+    {% for item in items %}
+    <li>
+        <a href="{% url 'posehenie_detail' item.pk %}">{{ item.patient }} — {{ item.data_posesheniya }}</a> —
+        <a href="{% url 'posehenie_update' item.pk %}">Изменить</a> |
+        <a href="{% url 'posehenie_delete' item.pk %}">Удалить</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
